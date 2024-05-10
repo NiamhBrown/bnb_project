@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <title>List a Space | MakersBnB</title>
+    </head>
+    <body>
+        <div class="header">
+            <strong>MakersBnB</strong>
+            Hello, {{username}}
+            <div class="header-right">
+                <a href="/spaces">Spaces</a> |
+                <a href="/requests">Requests</a> |
+                <a href="/logout">Sign out</a>
+            </div>
+        </div>
+
+        <div class="centered-title">
+            <h1>List a Space</h1>
+             <p>
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellendus, nihil facilis labore error sapiente corrupti laudantium culpa atque reprehenderit ipsa libero nulla nostrum dignissimos ex enim expedita voluptate maxime!
+             </p> 
+         </div>
+
+        <div class="spaces-container">
+            <form class="input-section" action="/spaces" method="POST">
+                <div class="label-above">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name"> 
+                </div><br>
+                
+                <div class="label-above">
+                    <label for="description">Description</label>
+                    <textarea type="text" name="description" id="description"></textarea>
+                </div><br>
+
+                <div class="label-above">
+                    <label for="price_per_night">Price Per Night</label>
+                    <input type="number" min="0" name="price_per_night" id="price_per_night" style="width: 259px;">
+                </div><br>
+
+                <div class="label-above">
+                    <label for="start_date">Available from</label>
+                    <input type="date" name="start_date" id="start_date" style="width: 259px;">
+                </div><br>
+                
+                <div class="label-above">
+                    <label for="end_date">Available to</label>
+                    <input type="date" name="end_date" id="end_date" style="width: 259px;">
+                </div><br>
+
+                <input class="list-my-space-button" type="submit" value="List my Space">
+            </form>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <title>All Spaces | MakersBnB</title>
+    </head>
+    <body>
+        <div class="header">
+            <strong>MakersBnB</strong>
+            Hello, {{username}}
+            <div class="header-right">
+                <a href="/spaces">Spaces</a> |
+                <a href="/requests">Requests</a> |
+                <a href="/logout">Sign out</a>
+            </div>
+        </div>
+        
+        <div class="centered-title">
+           <h1>Book a Space</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellendus, nihil facilis labore error sapiente corrupti laudantium culpa atque reprehenderit ipsa libero nulla nostrum dignissimos ex enim expedita voluptate maxime!
+            </p> 
+        </div>
+
+        <div class="list-space-button">
+            <a href="/spaces/new" >List a Space</a>
+        </div>
+
+        <form class="spaces-search-form" action="/spaces" method="GET">
+            <label for="start">Check-in:</label>
+            <input type="date" name="start" id="start">
+
+            <label for="end_date">Check-out:</label>
+            <input type="date" name="end" id="end">
+
+            <input type="submit" value="Search", id="search-button">
+        </form>
+
+        <div class="spaces-container">
+            {% for space in spaces %}
+            {% if space.start_date >= start and space.end_date <= end %}
+            <a href="/spaces/{{space.id}}">
+                <button class="space-button">
+                    <div class="space-name">{{space.name}}</div><br>{{space.description}}
+                </button>
+            </a>
+            <br>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+    </body>
+</html>

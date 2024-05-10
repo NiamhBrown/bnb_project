@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>All Spaces | MakersBnB</title>
+</head>
+<body>
+    <div class="header">
+        <strong>MakersBnB</strong>
+        Hello, {{username}}
+        <div class="header-right">
+            <a href="/spaces">Spaces</a> |
+            <a href="/requests">Requests</a> |
+            <a href="/logout">Sign out</a>
+        </div>
+    </div>
+    
+    <div class="centered-title">
+       <h1>Requests</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem repellendus, nihil facilis labore error sapiente corrupti laudantium culpa atque reprehenderit ipsa libero nulla nostrum dignissimos ex enim expedita voluptate maxime!
+        </p> 
+    </div>
+
+    <div class="request-wrapper-left">
+        <p>Requests you made</p>
+        {% for req in reqs_from %}
+        <a href="/spaces/{{req['space_id']}}">
+            <button class="space-button">
+                {{req['name']}}
+                {{req['start_date']}}
+                {{req['end_date']}}
+                {{req['approval']}}
+            </button>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="request-wrapper-right">
+        <p>Requests you recieved</p>
+        {% for req in reqs_to %}
+        {% if req['approval'] != 'Declined' %}
+        <a href="/spaces/{{req['space_id']}}">
+            <button class="space-button">
+                {{req['name']}}
+                {{req['start_date']}}
+                {{req['end_date']}}
+                {{req['approval']}}
+                {% if req['approval'] == 'Pending' %}
+                <form method="post" action="/requests/{{req['user_id']}}-{{req['space_id']}}">
+                    <input type="submit" name="response" value="Approved"></input>
+                    <input type="submit" name="response" value="Declined"></input>
+                </form>
+                {% endif %}
+            </button>
+        </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

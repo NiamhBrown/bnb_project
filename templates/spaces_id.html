@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <title>{{space.name}} | MakersBnB</title>
+    </head>
+    <body>
+        <div class="header">
+            <strong>MakersBnB</strong>
+            Hello, {{username}}
+            <div class="header-right">
+                <a href="/spaces">Spaces</a> |
+                <a href="/requests">Requests</a> |
+                <a href="/logout">Sign out</a>
+            </div>
+        </div>
+
+        <h1 class="centered-title">{{space.name}}</h1><br>
+        <div class="spaces-container">
+            <p>{{space.description}}</p>
+            <p>£{{space.price_per_night}} (per night)</p>
+            <form action="/spaces/{{space.id}}" method="POST">
+                <div class="date">
+                    <label for="start_date">Check-in Date:</label>
+                    <input type="date" min="{{space.start_date}}" max="{{space.end_date}}" name="start_date" id="start_date"><br>
+                </div>
+                <div class="date">
+                    <label for="end_date">Check-out Date:</label>
+                    <input type="date" min="{{space.start_date}}" max="{{space.end_date}}" name="end_date" id="end_date"><br>
+                </div>
+                <input type="submit" value="Request to Book" class="list-my-space-button">
+                
+            </form>
+            </div>
+    </body>
+</html>
