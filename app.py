@@ -123,7 +123,9 @@ def get_login():
 def get_spaces():
     connection = get_flask_database_connection(app)
     repo = SpaceRepository(connection)
-    spaces = repo.all()
+    spaces = repo.all() # CHANGE THIS, should be a SQL QUERY TO BRING BACK ONLY AVAILABLE SPACES FROM DATABASE, not 'all' of them
+    #don't have to create a new function on my repo for this
+    
     # the following block is horrible. Works mostly. Oh well!
     if len(request.args) == 0 or request.args['start'] == "" or request.args['end'] == "":
         start = datetime.date(2000, 1, 1)

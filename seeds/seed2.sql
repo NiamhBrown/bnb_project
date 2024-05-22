@@ -21,14 +21,13 @@ CREATE TABLE spaces (
   name text,
   description text,
   price_per_night int,
-  start_date date,
-  end_date date,
   constraint fk_owner foreign key(owner) references users(id) on delete cascade
 );
 
 CREATE SEQUENCE IF NOT EXISTS users_spaces_requests_id_seq;
 -- Create the join table.
 CREATE TABLE users_spaces_requests (
+id SERIAL PRIMARY KEY,
   user_id int,
   space_id int,
   start_date date,
@@ -36,7 +35,6 @@ CREATE TABLE users_spaces_requests (
   approval text,
   constraint fk_user foreign key(user_id) references users(id) on delete cascade,
   constraint fk_space foreign key(space_id) references spaces(id) on delete cascade,
-  PRIMARY KEY (user_id, space_id) --this means a user can only book a place once, what if they wanna book it for more than one date ranges?
 );
 
 INSERT INTO users (name, email, password) VALUES ('Person1', 'test1@gmail.com', 'password123'); 
